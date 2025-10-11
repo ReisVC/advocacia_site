@@ -2,7 +2,7 @@ import { Linkedin, Facebook } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 p-6 mt-20 fixed w-full bottom-0 overflow-y-visible">
+    <footer className="bg-gray-900 text-gray-300 p-6 w-full overflow-y-visible absolute bottom-0 left-0">
       <div className="max-w-6xl mx-auto text-center space-y-4 p-0">
         <p>Central São Paulo: (11) 3456-7890 -  Rio de Janeiro: (21) 2345-6789</p>
         <div className="flex justify-center space-x-6 text-gray-400 mt-4">
