@@ -13,7 +13,7 @@ export default function Noticias() {
   ];
 
   return (
-    <section className="p-16 bg-white min-h-screen text-center">
+    <section className="p-16 bg-white min-h-screen text-center pt-40 md:pt-25 pb-70 md:pt-20">
       <h2 className="text-4xl font-serif text-[#B19763] mb-6">Notícias</h2>
       <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
         {news.map((n, i) => (

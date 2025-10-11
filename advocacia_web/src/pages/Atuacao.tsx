@@ -1,12 +1,12 @@
 export default function Atuacao() {
   const areas = [
-    { name: "Direito Civil", img: "https://images.unsplash.com/photo-1589820296156-2454bb8dfc5b?auto=format&fit=crop&w=1200&q=80" },
+    { name: "Direito Civil", img: "https://images.pexels.com/photos/7875996/pexels-photo-7875996.jpeg" },
     { name: "Direito Empresarial", img: "https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=1200&q=80" },
     { name: "Direito Trabalhista", img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" },
   ];
 
   return (
-    <section className="p-16 bg-white min-h-screen text-center">
+    <section className="p-16 bg-white min-h-screen text-center pt-40 md:pt-25 pb-70 md:pb-40">
       <h2 className="text-4xl font-serif text-[#B19763] mb-8">
         Áreas de Atuação
       </h2>

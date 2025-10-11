@@ -49,7 +49,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans">
       <Navbar current={current} navigateTo={navigateTo} pages={pages} />
-      <main className="relative flex-1 overflow-hidden pt-24">
+      <main className="relative flex-1 overflow-x-hidden pt-24">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={current}

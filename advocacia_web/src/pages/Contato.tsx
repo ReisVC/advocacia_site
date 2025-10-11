@@ -1,6 +1,6 @@
 export default function Contato() {
   return (
-    <section className="p-16 text-center bg-gray-50 min-h-screen">
+    <section className="p-16 text-center bg-gray-50 min-h-screen pt-40 md:pt-25">
       <h2 className="text-4xl font-serif text-[#B19763] mb-6">Fale Conosco</h2>
       <form className="max-w-md mx-auto space-y-4">
         <input type="text" placeholder="Seu nome" className="w-full p-3 border rounded-md" />
