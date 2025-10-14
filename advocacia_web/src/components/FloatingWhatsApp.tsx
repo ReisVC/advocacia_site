@@ -1,13 +1,22 @@
+import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 export default function FloatingWhatsApp() {
   return (
-    <a
-      href="https://wa.me/5511999999999"
+    <motion.a
+      href="https://wa.me/5511999999999" // ← substitua pelo número real
       target="_blank"
-      className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition"
+      rel="noopener noreferrer"
+      className="fixed bottom-4 right-4 bg-[#25D366] text-white p-3 rounded-full shadow-lg z-50"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label="Abrir conversa no WhatsApp"
     >
-      <MessageCircle />
-    </a>
+      <div className="relative flex items-center justify-center">
+        {/* Efeito de brilho sutil */}
+        <span className="absolute inset-0 rounded-full bg-white opacity-20 blur-md animate-pulse"></span>
+        <MessageCircle size={26} strokeWidth={2.5} />
+      </div>
+    </motion.a>
   );
 }

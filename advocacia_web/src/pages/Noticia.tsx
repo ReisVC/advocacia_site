@@ -11,7 +11,7 @@ interface Noticia {
   imagem: string;
 }
 
-export default function Home() {
+export default function Noticia() {
   const [noticias, setNoticias] = useState<Noticia[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
