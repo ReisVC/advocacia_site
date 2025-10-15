@@ -47,7 +47,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans">
+    <div className=" min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans">
       <Navbar current={current} navigateTo={navigateTo} pages={pages} />
       <main className="relative flex-1  pt-24">
         <AnimatePresence mode="wait" custom={direction}>
@@ -64,8 +64,7 @@ export default function App() {
           </motion.div>
         </AnimatePresence>
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+
     </div>
   );
 }
