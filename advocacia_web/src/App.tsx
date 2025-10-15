@@ -1,70 +1,119 @@
-import { useState } from "react";
-import { AnimatePresence, motion, Variants } from "framer-motion";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import Home from "./pages/Home";
-import Escritorio from "./pages/Escritorio";
-import Atuacao from "./pages/Atuacao";
-import Equipe from "./pages/Equipe";
-import Noticias from "./pages/Noticia";
-import Contato from "./pages/Contato";
-
-const slideVariants: Variants = {
-  initial: (dir: number | undefined) => ({
-    x: dir && dir > 0 ? "100%" : "-100%",
-    opacity: 0,
-  }),
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-  exit: (dir: number | undefined) => ({
-    x: dir && dir > 0 ? "-100%" : "100%",
-    opacity: 0,
-    transition: { duration: 0.5 },
-  }),
-};
+import { Header } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { About } from "./components//About";
+import { Areas } from "./components/Areas";
+import { Team } from "./components/Team";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 
 export default function App() {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [page, setPage] = useState<string>("home");
 
-  const pages = [
-    { id: "home", label: "Home", component: <Home /> },
-    { id: "escritorio", label: "Escritório", component: <Escritorio /> },
-    { id: "atuacao", label: "Atuação", component: <Atuacao /> },
-    { id: "equipe", label: "Equipe", component: <Equipe /> },
-    { id: "noticias", label: "Notícias", component: <Noticias /> },
-    { id: "contato", label: "Contato", component: <Contato /> },
-  ];
-
-  const navigateTo = (i: number) => {
-    setDirection(i > current ? 1 : -1);
-    setCurrent(i);
+  const navigate = (to: string) => {
+    if (to === "menu") {
+      return setPage((p) => (p === "home" ? "menu" : "home"));
+    }
+    setPage(to);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <div className=" min-h-screen flex flex-col bg-gray-50 text-gray-800 font-sans">
-      <Navbar current={current} navigateTo={navigateTo} pages={pages} />
-      <main className="relative flex-1  pt-24">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={current}
-            variants={slideVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            custom={direction}
-            className="absolute w-full min-h-screen top-0 left-0 bg-white"
-          >
-            {pages[current].component}
-          </motion.div>
+    <div className="min-h-screen bg-gradient-to-b from-[#fffaf6] to-[#f3efe7] text-gray-900">
+      <Header onNavigate={navigate} current={page} />
+
+      <main className="pt-20">
+        <AnimatePresence mode="wait">
+          {page === "home" && (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Hero onContact={() => setPage("contact")} />
+              <Areas />
+              <Team />
+              <Contact />
+            </motion.div>
+          )}
+
+          {page === "about" && (
+            <motion.div
+              key="about"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <About />
+            </motion.div>
+          )}
+
+          {page === "areas" && (
+            <motion.div
+              key="areas"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Areas />
+            </motion.div>
+          )}
+
+          {page === "team" && (
+            <motion.div
+              key="team"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Team />
+            </motion.div>
+          )}
+
+          {page === "contact" && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Contact />
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
 
+      <Footer />
+
+      {/* Botão WhatsApp flutuante */}
+      <motion.a
+        href="https://wa.me/5511999999999"
+        className="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 shadow-lg"
+        aria-label="WhatsApp"
+        animate={{
+          scale: [1, 1.1, 1],
+          rotate: [0, 5, -5, 0],
+        }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21 12.1c0 4.9-4 8.9-8.9 8.9a8.8 8.8 0 01-4-.95L3 21l1.9-5.1A8.9 8.9 0 012.1 12C2.1 7.1 6 3.1 11 3.1S21 7.1 21 12.1z"
+            stroke="white"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </motion.a>
     </div>
   );
 }

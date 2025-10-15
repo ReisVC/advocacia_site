@@ -1,40 +1,21 @@
-import { Linkedin, Facebook } from "lucide-react";
+import React from "react";
+import { Container } from "./Container"; // ajuste o caminho se necessário
 
-export default function Footer() {
+export const Footer: React.FC = () => {
   return (
-    <footer className="fixed bg-gray-900 bottom-0 h-20 z-50 text-gray-300 w-screen py-4 border-t border-gray-800   p-4 border shadow-[0_0_15px_#0a0a0a] ">
-     
+    <footer className="py-8 mt-12 fixed bottom-0 w-screen bg-gray-900 backdrop-blur shadow-[0_0_15px_#0a0a0a] border-b border-gray-800">
+      <Container>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-[#E5E5E5]">
+            © {new Date().getFullYear()} Dr. Alexandre Reis — Todos os direitos reservados
+          </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
-        {/* Telefones */}
-        <div className="text-sm">
-          <span className="text-[#B19763] font-medium">São Paulo:</span> (11) 3456-7890&nbsp;&nbsp;|&nbsp;&nbsp;
-          <span className="text-[#B19763] font-medium">Rio de Janeiro:</span> (21) 2345-6789
+          <div className="flex items-center gap-4 text-[#B19763]">
+            <a href="#">LinkedIn</a>
+            <a href="#">OAB</a>
+          </div>
         </div>
-
-        {/* Ícones sociais */}
-        <div className="flex items-center justify-center gap-4">
-          <a
-            href="#"
-            aria-label="LinkedIn"
-            className="text-gray-400 hover:text-[#B19763] transition-colors"
-          >
-            <Linkedin size={18} />
-          </a>
-          <a
-            href="#"
-            aria-label="Facebook"
-            className="text-gray-400 hover:text-[#B19763] transition-colors"
-          >
-            <Facebook size={18} />
-          </a>
-        </div>
-      </div>
-
-      {/* Linha inferior */}
-      <div className="relative mt-3 text-center text-xs text-gray-500">
-        © 2025 <span className="text-[#B19763] font-medium">Souza & Lima Advocacia</span> — Todos os direitos reservados.
-      </div>
+      </Container>
     </footer>
   );
-}
+};
